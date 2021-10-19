@@ -1,0 +1,25 @@
+From c1fff2e35c7648c6248e6d9e7a25e69197a1079d Mon Sep 17 00:00:00 2001
+From: atomlong <atom.long@hotmail.com>
+Date: Tue, 19 Oct 2021 14:55:28 +0800
+Subject: [PATCH 2/2] support more URL escape codes
+
+---
+ src/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.c b/src/main.c
+index edf16dc..deee871 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -65,7 +65,7 @@ void usage(FILE *fd)
+     fputs("USAGE: urlencode [-adhn]\n", fd);
+ }
+ 
+-static const char reserved[] = "!#$%&'()*+,/:;=?@[]";
++static const char reserved[] = "!#$%&'()*+,/:;=?@[]<>{}|\\^~";
+ 
+ void encode()
+ {
+-- 
+2.33.1.windows.1
+
