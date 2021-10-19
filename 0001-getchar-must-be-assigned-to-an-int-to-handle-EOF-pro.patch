@@ -1,0 +1,37 @@
+From 84e6fd258a2e6e99fc05f243565a66a351aaa1e1 Mon Sep 17 00:00:00 2001
+From: atomlong <atom.long@hotmail.com>
+Date: Tue, 19 Oct 2021 14:19:38 +0800
+Subject: [PATCH 1/2] getchar() must be assigned to an int to handle EOF
+ properly. [1]
+ https://blog.karthisoftek.com/a?ID=00300-66daf1de-e50c-40e9-83fe-6e03848973c6
+ [2] https://pvs-studio.com/en/docs/warnings/v739/
+
+---
+ src/main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 39e117f..edf16dc 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -69,7 +69,7 @@ static const char reserved[] = "!#$%&'()*+,/:;=?@[]";
+ 
+ void encode()
+ {
+-    char c;
++    int c;
+     while (((c = getchar())) != EOF) {
+         if (c == ' ') {
+             putchar('+');
+@@ -86,7 +86,7 @@ void encode()
+ 
+ void decode()
+ {
+-    char c;
++    int c;
+     while (((c = getchar())) != EOF) {
+         if (c == '+') {
+             putchar(' ');
+-- 
+2.33.1.windows.1
+
